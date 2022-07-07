@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.EntityFrameworkCore;
 using PublisherData;
 
 //GetAuthors();
@@ -19,5 +20,6 @@ QueryFilters();
 
 void QueryFilters()
 {
-    var authors = _context.Authors.Where(s => s.FirstName == "Josie").ToList();
+    //var authors = _context.Authors.Where(s => s.FirstName == "Josie").ToList();
+    var authors = _context.Authors.Where(a => EF.Functions.Like(a.LastName, "L%")).ToList();
 }
